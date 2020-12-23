@@ -1,0 +1,12 @@
+<h3>{{currentUser.username}} Cart</h3>
+<span *ngFor="let item of items">
+  <div class="cart-item" *ngIf="item.active">
+    <span>{{ item.tour.name }}</span>
+<span>{{ item.tour.price | currency }}</span>
+<button (click)="delete(item)">Remove</button>
+</div>
+</span>
+<div class="cart-item">
+    <span>Total</span>
+    <span>{{ sum | currency }}</span>
+</div>

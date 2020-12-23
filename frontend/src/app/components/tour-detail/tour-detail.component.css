@@ -1,0 +1,76 @@
+
+
+.hidden {
+    visibility: hidden;
+  }
+
+.visible {
+    visibility: visible;
+}
+.occupied{
+    color: Tomato;
+}
+.free{
+    color: MediumSeaGreen;
+}
+.maxPrice{
+    border-style: solid;
+    border-color: Tomato;
+}
+.minPrice{
+    border-style:solid;
+    border-color: MediumSeaGreen;
+}
+
+.action { 
+    position: fixed; padding: 5px;
+    bottom: 0; right: 0; background: #333;color: #fff;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    
+    width: auto;
+    height: auto;
+    
+  }
+  .rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}

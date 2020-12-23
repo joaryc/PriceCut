@@ -1,0 +1,227 @@
+import { Component } from '@angular/core';
+import { TokenStorageService } from '../../_services/token-storage.service';
+import { Occasion } from './occasion';
+import { Observable } from 'rxjs';
+import { OccasionService } from '../../_services/occasion.service';
+import { FormArray, FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { Options, LabelType } from 'ng5-slider';
+
+
+
+@Component({
+  selector: 'tour-list',
+  templateUrl: './tour-list.component.html',
+  styleUrls: ['./tour-list.component.css'],
+  providers: [OccasionService]
+
+})
+
+
+export class TourListComponent {
+
+  
+  tours: Occasion[];
+  selectedTour: Occasion;
+  communicat = "";
+  cheapest = 0;
+  seatsTaken = 0;
+  minPrice = 10000000;
+  maxPrice = 0;
+  currentUser: any;
+  isLoggedIn;
+  showModeratorBoard;
+  roles;
+  username;
+  comments = {};
+  user;
+
+
+  namesCheckboxLabels = [];
+  filteredNames = [];
+  destinationsCheckboxLabels = [];
+  filteredDestinations = [];
+  filteredMaxPrice = 1000;
+  filteredMinPrice = 0;
+  filteredMaxArrivalDate = new Date("2022-01-16").getTime();
+  filteredMinDepartureDate = new Date("2000-01-16").getTime();
+
+  constructor(private tourService: OccasionService, private fb: FormBuilder, private tokenStorageService: TokenStorageService) {
+    this.getOccasions();
+  }
+  getOccasions(): void {
+    this.tourService.getOccasions()
+      .subscribe(tours => {
+        this.get_maxPrice(tours);
+        this.get_minPrice(tours);
+        this.tours = tours
+
+        for (var i = 0; i < tours.length; i++) {
+          if (!this.namesCheckboxLabels.includes(tours[i].title)) {
+            this.namesCheckboxLabels.push(tours[i].title)
+            this.names.push(this.fb.control(true))
+            this.tours[i].start_date = new Date(this.tours[i].start_date).getTime();
+            this.tours[i].end_date = new Date(this.tours[i].end_date).getTime();
+            
+          }
+         
+          this.tourService.getComments(tours[i]._id)
+            .subscribe(comments => { if (comments[0]) this.comments[comments[0].tourId] = comments })
+
+        }
+      });
+  }
+
+  optionsPriceSlider: Options = {
+    floor: 0,
+    ceil: 1000,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Min price:</b> $' + value;
+        case LabelType.High:
+          return '<b>Max price:</b> $' + value;
+        default:
+          return '$' + value;
+      }
+    }
+  };
+
+  optionsDateSlider: Options = {
+    floor: new Date().getTime(),
+    ceil: new Date("2021-10-01").getTime(),
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Departure date:</b>' + new Date(value).toLocaleDateString("en-US");
+        case LabelType.High:
+          return '<b>Arrival date:</b>' + new Date(value).toLocaleDateString("en-US");
+        default:
+          return '$' + value;
+      }
+    }
+  };
+
+  optionsRateSlider: Options = {
+    floor: 0,
+    ceil: 5,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Minimum rate:</b>' + value;
+        case LabelType.High:
+          return '<b>Maximum rate:</b>' + value;
+        default:
+          return "" + value;
+      }
+    }
+  };
+
+  filters = this.fb.group({
+    names: this.fb.array([]),
+    destinations: this.fb.array([]),
+    price: new FormControl([0, 1000]),
+    date: new FormControl([new Date().getTime(), new Date("2022-01-16").getTime()]),
+    rate: new FormControl([0, 5])
+  })
+
+
+
+  ngAfterViewInit() {
+    let o: Observable<boolean> = this.names.valueChanges;
+    o.subscribe(v => {
+      this.filteredNames = []
+      for (let n in this.namesCheckboxLabels) {
+        if (v[n])
+          this.filteredNames.push(this.namesCheckboxLabels[n])
+      }
+    });
+    let d: Observable<boolean> = this.destinations.valueChanges;
+    d.subscribe(v => {
+      this.filteredDestinations = []
+      for (let n in this.namesCheckboxLabels) {
+        if (v[n])
+          this.filteredDestinations.push(this.destinationsCheckboxLabels[n])
+      }
+    });
+    let p: Observable<boolean> = this.price.valueChanges;
+    p.subscribe(v => {
+      this.filteredMaxPrice = v[1]
+      this.filteredMinPrice = v[0]
+    });
+    let dt: Observable<boolean> = this.date.valueChanges;
+    dt.subscribe(v => {
+      this.filteredMaxArrivalDate = v[1]
+      this.filteredMinDepartureDate = v[0]
+    });
+  }
+
+  get names() {
+    return this.filters.get('names') as FormArray;
+  }
+  get destinations() {
+    return this.filters.get('destinations') as FormArray;
+  }
+  get price() {
+    return this.filters.get('price') as FormArray;
+  }
+  get date() {
+    return this.filters.get('date') as FormArray;
+  }
+  get rate() {
+    return this.filters.get('rate') as FormArray;
+  }
+
+  ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+
+      this.username = user.username;
+      this.roles = user.roles;
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.user = user;
+
+    }
+  }
+
+  commentsForm = this.fb.group({
+    text: "",
+    rate: 5
+  });
+
+  addComment(tour) {
+    let comment = {
+      text: this.commentsForm.value.text,
+      rate: this.commentsForm.value.rate,
+      username: this.username,
+      tourId: tour._id
+    };
+    this.tourService.addComment(tour._id, JSON.stringify(comment)).subscribe(response => { });
+    this.tourService.getComments(tour._id)
+      .subscribe(comments => { if (comments[0]) this.comments[comments[0].tourId] = comments })
+    this.commentsForm.value.text = "";
+    this.commentsForm.value.rate = "";
+
+  }
+  valueChange(count) {
+    this.seatsTaken += count;
+  }
+  get_minPrice(tours: Occasion[]) {
+    for (var i = 0; i < tours.length; i++) {
+      if (tours[i].price < this.minPrice) {
+        this.minPrice = tours[i].price
+      }
+    }
+  }
+  get_maxPrice(tours: Occasion[]) {
+    for (var i = 0; i < tours.length; i++) {
+      if (tours[i].price > this.maxPrice) {
+        this.maxPrice = tours[i].price
+      }
+    }
+  }
+ 
+  
+}
+

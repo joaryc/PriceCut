@@ -1,0 +1,16 @@
+<div *ngIf="tour">
+
+
+    <span>{{tour.title}} </span>
+    <span>{{tour.start_date}} </span>
+    <span>{{tour.end_date}} </span>
+    <span>{{tour.description}} </span>
+
+    <button *ngIf="isLoggedIn && !showModeratorBoard" [ngClass]="tour.seats!=tour.seats_taken  ? 'visible': 'hidden'" (click)="onSelectPlus(tour,user)">Create rezervation</button>
+
+    <button *ngIf="isLoggedIn && showModeratorBoard" (click)="delete(tour)">Usuń wycieczkę</button>
+
+
+    <img src={{tour.pic_link}} [routerLink]="['/tour-detail-view/']" [queryParams]="{ tourId: tour._id}">
+
+</div>
