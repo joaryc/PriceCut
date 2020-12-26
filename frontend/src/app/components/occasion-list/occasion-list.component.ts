@@ -10,19 +10,19 @@ import { Options, LabelType } from 'ng5-slider';
 
 
 @Component({
-  selector: 'tour-list',
-  templateUrl: './tour-list.component.html',
-  styleUrls: ['./tour-list.component.css'],
+  selector: 'occasion-list',
+  templateUrl: './occasion-list.component.html',
+  styleUrls: ['./occasion-list.component.css'],
   providers: [OccasionService]
 
 })
 
 
-export class TourListComponent {
+export class OccasionListComponent {
 
   
-  tours: Occasion[];
-  selectedTour: Occasion;
+  occasions: Occasion[];
+  selectedOccasion: Occasion;
   communicat = "";
   cheapest = 0;
   seatsTaken = 0;
@@ -46,27 +46,27 @@ export class TourListComponent {
   filteredMaxArrivalDate = new Date("2022-01-16").getTime();
   filteredMinDepartureDate = new Date("2000-01-16").getTime();
 
-  constructor(private tourService: OccasionService, private fb: FormBuilder, private tokenStorageService: TokenStorageService) {
+  constructor(private occasionService: OccasionService, private fb: FormBuilder, private tokenStorageService: TokenStorageService) {
     this.getOccasions();
   }
   getOccasions(): void {
-    this.tourService.getOccasions()
-      .subscribe(tours => {
-        this.get_maxPrice(tours);
-        this.get_minPrice(tours);
-        this.tours = tours
+    this.occasionService.getOccasions()
+      .subscribe(occasions => {
+        this.get_maxPrice(occasions);
+        this.get_minPrice(occasions);
+        this.occasions = occasions
 
-        for (var i = 0; i < tours.length; i++) {
-          if (!this.namesCheckboxLabels.includes(tours[i].title)) {
-            this.namesCheckboxLabels.push(tours[i].title)
+        for (var i = 0; i < occasions.length; i++) {
+          if (!this.namesCheckboxLabels.includes(occasions[i].title)) {
+            this.namesCheckboxLabels.push(occasions[i].title)
             this.names.push(this.fb.control(true))
-            this.tours[i].start_date = new Date(this.tours[i].start_date).getTime();
-            this.tours[i].end_date = new Date(this.tours[i].end_date).getTime();
+            this.occasions[i].start_date = new Date(this.occasions[i].start_date).getTime();
+            this.occasions[i].end_date = new Date(this.occasions[i].end_date).getTime();
             
           }
          
-          this.tourService.getComments(tours[i]._id)
-            .subscribe(comments => { if (comments[0]) this.comments[comments[0].tourId] = comments })
+          this.occasionService.getComments(occasions[i]._id)
+            .subscribe(comments => { if (comments[0]) this.comments[comments[0].occasionId] = comments })
 
         }
       });
@@ -190,16 +190,16 @@ export class TourListComponent {
     rate: 5
   });
 
-  addComment(tour) {
+  addComment(occasion) {
     let comment = {
       text: this.commentsForm.value.text,
       rate: this.commentsForm.value.rate,
       username: this.username,
-      tourId: tour._id
+      occasionId: occasion._id
     };
-    this.tourService.addComment(tour._id, JSON.stringify(comment)).subscribe(response => { });
-    this.tourService.getComments(tour._id)
-      .subscribe(comments => { if (comments[0]) this.comments[comments[0].tourId] = comments })
+    this.occasionService.addComment(occasion._id, JSON.stringify(comment)).subscribe(response => { });
+    this.occasionService.getComments(occasion._id)
+      .subscribe(comments => { if (comments[0]) this.comments[comments[0].occasionId] = comments })
     this.commentsForm.value.text = "";
     this.commentsForm.value.rate = "";
 
@@ -207,17 +207,17 @@ export class TourListComponent {
   valueChange(count) {
     this.seatsTaken += count;
   }
-  get_minPrice(tours: Occasion[]) {
-    for (var i = 0; i < tours.length; i++) {
-      if (tours[i].price < this.minPrice) {
-        this.minPrice = tours[i].price
+  get_minPrice(occasions: Occasion[]) {
+    for (var i = 0; i < occasions.length; i++) {
+      if (occasions[i].price < this.minPrice) {
+        this.minPrice = occasions[i].price
       }
     }
   }
-  get_maxPrice(tours: Occasion[]) {
-    for (var i = 0; i < tours.length; i++) {
-      if (tours[i].price > this.maxPrice) {
-        this.maxPrice = tours[i].price
+  get_maxPrice(occasions: Occasion[]) {
+    for (var i = 0; i < occasions.length; i++) {
+      if (occasions[i].price > this.maxPrice) {
+        this.maxPrice = occasions[i].price
       }
     }
   }

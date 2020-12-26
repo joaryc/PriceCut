@@ -1,7 +1,7 @@
- import { Injectable } from '@angular/core';
+ /*import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-import { Tour } from '../components/tour-list/tours';
+import { Tour } from '../components/occasion-list/tours';
 
 @Injectable({
   providedIn: 'root',
@@ -41,4 +41,4 @@ export class InMemoryDataService implements InMemoryDbService {
   genId(tours: Tour[]): number {
     return tours.length > 0 ? Math.max(...tours.map(tour => tour._id)) + 1 : 11;
   }
-} 
+} */

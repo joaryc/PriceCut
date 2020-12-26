@@ -1,4 +1,4 @@
-import { Occasion } from '../components/tour-list/occasion';
+import { Occasion } from '../components/occasion-list/occasion';
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -51,7 +51,7 @@ export class OccasionService {
       catchError(this.handleError<Occasion>('addOcassion'))
     );
   }
-  deleteTour(occasion: Occasion): Observable<Occasion> {
+  deleteOccasion(occasion: Occasion): Observable<Occasion> {
     const id = occasion._id;
     const url = `${this.baseUrl}/${id}`;
 
@@ -75,6 +75,6 @@ export class OccasionService {
     return this.http.post(`${this.baseUrl}/${occasionId}/addcomment`, data, this.httpOptions)
   }
   getComments(occasionId): Observable<any> {
-    return this.http.get(`${this.baseUrl}/comments/?tourId=${occasionId}`);
+    return this.http.get(`${this.baseUrl}/comments/?occasionId=${occasionId}`);
   }
 }

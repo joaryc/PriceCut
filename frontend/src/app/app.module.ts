@@ -7,14 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './_services/in-memory-data.service';
+//import { InMemoryDataService } from './_services/in-memory-data.service';
 
-import { TourDetailComponent } from './components/tour-detail/tour-detail.component';
+import { OccasionDetailComponent } from './components/occasion-detail/occasion-detail.component';
 import { AddTourComponent } from './components/add-tour/add-tour.component';
-import { CartComponent } from './components/cart/cart.component';
+import { FavouriteComponent } from './components/favourite/favourite.component';
 import { TourViewComponent } from './components/tour-view/tour-view.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { TourListComponent } from './components/tour-list/tour-list.component';
+import { OccasionListComponent } from './components/occasion-list/occasion-list.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component'; // CLI imports router
@@ -31,12 +31,12 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    TourDetailComponent,    
+    OccasionDetailComponent,    
     AddTourComponent,
-    CartComponent,
+    FavouriteComponent,
     TourViewComponent,
     PageNotFoundComponent,
-    TourListComponent,
+    OccasionListComponent,
     TopBarComponent,
     LoginComponent,
     RegisterComponent,

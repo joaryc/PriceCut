@@ -8,7 +8,7 @@
     <div formArrayName="names">
         Names
         <span *ngFor="let name of names.controls; let i=index">      
-      <p>{{namesCheckboxLabels[i]}}<input type="checkbox" name=tour.name [id]="i" [formControlName]="i"></p>
+      <p>{{namesCheckboxLabels[i]}}<input type="checkbox" name=occasion.name [id]="i" [formControlName]="i"></p>
 
     </span>
     </div>
@@ -24,12 +24,12 @@
 <div *ngIf="isLoggedIn && showModeratorBoard">
     <p [ngClass]="(seatsTaken)>10  ? 'free': 'occupied'">Total Taken Seats : {{seatsTaken}}</p>
 </div>
-<span *ngFor="let tour of tours; index as i" class="flex-container" style="flex-direction: row">
+<span *ngFor="let occasion of occasions; index as i" class="flex-container" style="flex-direction: row">
 
   <div >
-    <app-tour-detail [user]="user" [isLoggedIn]="isLoggedIn" [showModeratorBoard]="showModeratorBoard" [tour]="tour"
-      (valueChanged)="valueChange($event)" (deleteTour)="deleteTour(tour)" (newComment)="newComment($event)">
-    </app-tour-detail>
+    <app-occasion-detail [user]="user" [isLoggedIn]="isLoggedIn" [showModeratorBoard]="showModeratorBoard" [occasion]="occasion"
+      (valueChanged)="valueChange($event)" (deleteOccasion)="deleteOccasion(occasion)" (newComment)="newComment($event)">
+    </app-occasion-detail>
 
     <span *ngIf="isLoggedIn && !showModeratorBoard">
       <div>
@@ -45,13 +45,13 @@
           </label>
 
           <p>
-            <button [disabled]="!commentsForm.valid" type="submit" (click)="addComment(tour)">Add Comment</button>
+            <button [disabled]="!commentsForm.valid" type="submit" (click)="addComment(occasion)">Add Comment</button>
           </p>
         </form>
       </div>
     </span>
 
-<div *ngFor="let comment of comments[tour._id]">
+<div *ngFor="let comment of comments[occasion._id]">
     <p>Rate: {{comment.rate}}</p>
     <p>Comment: {{comment.text}}</p>
     <p>User: {{comment.username}}</p>
