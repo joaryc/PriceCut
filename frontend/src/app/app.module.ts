@@ -10,9 +10,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { InMemoryDataService } from './_services/in-memory-data.service';
 
 import { OccasionDetailComponent } from './components/occasion-detail/occasion-detail.component';
-import { AddTourComponent } from './components/add-tour/add-tour.component';
+import { AddOccasionComponent } from './components/add-occasion/add-occasion.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
-import { TourViewComponent } from './components/tour-view/tour-view.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { OccasionListComponent } from './components/occasion-list/occasion-list.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
@@ -32,9 +32,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   declarations: [
     AppComponent,
     OccasionDetailComponent,    
-    AddTourComponent,
+    AddOccasionComponent,
     FavouriteComponent,
-    TourViewComponent,
+    GalleryComponent,
     PageNotFoundComponent,
     OccasionListComponent,
     TopBarComponent,
@@ -54,7 +54,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ReactiveFormsModule,
     RouterModule.forRoot([
     { path: '', component: AppModule },
-    { path: 'products', component: TourViewComponent },
+    { path: 'products', component: GalleryComponent },
 ], { relativeLinkResolution: 'legacy' })
   ],
   providers: [authInterceptorProviders,{provide: LocationStrategy, useClass: HashLocationStrategy}],

@@ -50,6 +50,7 @@ exports.create = (req, res) => {
 
 
 exports.findAll = (req, res) => {
+    console.log("abc");
     const occasionId = req.query.occasionId;
 
     var condition = occasionId ? { occasionId: { "$in": [occasionId] } } : {};

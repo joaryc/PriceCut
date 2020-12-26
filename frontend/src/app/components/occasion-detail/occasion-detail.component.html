@@ -1,14 +1,14 @@
 <div *ngIf="occasion">
 
 
-    <span>{{occasion.title}} </span>
-    <span>{{occasion.start_date}} </span>
-    <span>{{occasion.end_date}} </span>
-    <span>{{occasion.description}} </span>
+    <span>Title: {{occasion.title}} </span>
+    <span>Start date: {{occasion.start_date}} </span>
+    <span>End date:{{occasion.end_date}} </span>
+    <span>Description: {{occasion.description}} </span>
 
     <button *ngIf="isLoggedIn && !showModeratorBoard" (click)="onSelectPlus(occasion,user)">Add to favourites</button>
 
-    <button *ngIf="isLoggedIn && showModeratorBoard" (click)="delete(occasion)">Usuń wycieczkę</button>
+    <button *ngIf="isLoggedIn && showModeratorBoard" (click)="delete(occasion)">remove occasion</button>
 
 
     <img src={{occasion.pic_link}} [routerLink]="['/occasion-detail-view/']" [queryParams]="{ occasionId: occasion._id}">

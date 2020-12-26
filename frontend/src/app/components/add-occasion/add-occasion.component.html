@@ -2,36 +2,18 @@
     <h1>{{title}}</h1>
     <form [formGroup]="profileForm">
         <label>
-      Name:
-      <input type="text" formControlName="name" required>
+      Title:
+      <input type="text" formControlName="title" required>
     </label>
-
-        <label>
-      Destination:
-      <input type="text" formControlName="destination" required>
-    </label>
-
         <label>
       Start_date:
       <input type="date" formControlName="start_date" required>
     </label>
-
         <label>
       End_date:
       <input type="date" formControlName="end_date" required>
     </label>
-        <label>
-      seats:
-      <input type="number" formControlName="seats" required>
-    </label>
-        <label>
-      seats_taken:
-      <input type="number" formControlName="seats_taken" required>
-    </label>
-        <label>
-      description:
-      <input type="string" formControlName="description" required>
-    </label>
+
         <label>
       price:
       <input type="number" min=0 max=1000 formControlName="price" required>
@@ -47,14 +29,11 @@
       <input type="string" formControlName="gallery3" >
       <input type="string" formControlName="gallery4" >
     </label>
-
-
-
         <p>
             Form Status: {{ profileForm.status}}
         </p>
         <p>
-            <button [disabled]="!profileForm.valid" type="submit" (click)="addTour()">Add Tour</button>
+            <button [disabled]="!profileForm.valid" type="submit" (click)="addOccasion()">Add</button>
         </p>
     </form>
 

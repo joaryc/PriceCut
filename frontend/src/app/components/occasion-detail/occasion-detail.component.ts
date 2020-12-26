@@ -54,7 +54,8 @@ export class OccasionDetailComponent implements OnInit {
     window.alert("Thank you, you're opinion is saved!");
   }
   addToFavourite(product, user) {
-    let favouriteProduct = {
+    console.log(product);
+    let favouriteProduct = {     
       occasionId: product._id,
       userId: user.id
     }

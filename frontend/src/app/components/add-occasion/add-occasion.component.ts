@@ -7,22 +7,19 @@ import { UserService } from '../../_services/user.service';
 
 
 @Component({
-  selector: 'app-add-tour',
-  templateUrl: './add-tour.component.html',
-  styleUrls: ['./add-tour.component.css']
+  selector: 'app-add-occasion',
+  templateUrl: './add-occasion.component.html',
+  styleUrls: ['./add-occasion.component.css']
 })
-export class AddTourComponent {
+export class AddOccasionComponent {
   accessError = "";
-  title = "Add tour"
+  title = "Add occasion"
   
   profileForm = this.tb.group({
     name: ['', Validators.required],
-    destination: [''],
     start_date: [''],
     end_date: [''],
     price: [''],
-    seats: [''],
-    seats_taken: [''],
     description: [''],
     pic_link: [''],
     gallery1: [''],
@@ -32,20 +29,20 @@ export class AddTourComponent {
 
 
   });
-  addTour(): void {
+  addOccasion(): void {
 
     if (!this.profileForm.value) { return; }
-    this.tourService.addOccasion(this.profileForm.value as Occasion)
-      .subscribe(tour => {
-        console.log(tour)
+    this.occasionService.addOccasion(this.profileForm.value as Occasion)
+      .subscribe(occasion => {
+        console.log(occasion)
         
       });
-    window.alert("New tour added!");
+    window.alert("New occasion added!");
   }
   
 
-  constructor(private tb: FormBuilder, private tourService: OccasionService, private userService: UserService) {
-    this.userService.getModeratorBoard().subscribe(
+  constructor(private tb: FormBuilder, private occasionService: OccasionService, private userService: UserService) {
+    this.userService.getUserBoard().subscribe(
       data => {},
       err => {this.accessError = err.error;}
     );

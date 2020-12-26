@@ -17,7 +17,7 @@ export class FavouriteComponent {
   constructor(
     private favouriteService: FavouriteService,
     private token: TokenStorageService,
-    private tourService: OccasionService,
+    private occasionService: OccasionService,
 
   ) { this.getData(); }
 
@@ -25,9 +25,9 @@ export class FavouriteComponent {
     this.currentUser = this.token.getUser();
     this.favouriteService.get(this.currentUser.id).subscribe(favouriteObjects => {
       for (let obj of favouriteObjects) {
-        this.tourService.getOccasion(obj.tourId).subscribe(tour => {
-          this.items.push({ tour: tour, favouriteObjId: obj._id, active: true });
-          this.sum += tour.price
+        this.occasionService.getOccasion(obj.occasionId).subscribe(occasion => {
+          this.items.push({ occasion: occasion, favouriteObjId: obj._id, active: true });
+          console.log(this.items)
         });
       }
     })
@@ -35,8 +35,7 @@ export class FavouriteComponent {
 
   delete(favouriteItem) {
     window.alert("Reservation deleted!");
-    favouriteItem.active = false;
-    this.sum -= favouriteItem.tour.price
+    favouriteItem.active = false;    
     this.favouriteService.delete(favouriteItem.favouriteObjId,this.currentUser.id).subscribe(data => { console.log(data) });
   }
 

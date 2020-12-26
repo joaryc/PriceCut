@@ -18,7 +18,7 @@ module.exports = app => {
 
     router.post("/:id/addcomment", comment.create);
 
-    router.get("/comments", comment.findAll);
+    router.get("/comments/?occasionId", comment.findAll);
 
     app.use('/api/cutprice', router);
 };
