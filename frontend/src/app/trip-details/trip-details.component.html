@@ -1,0 +1,68 @@
+
+
+<div class="container">
+    <div class="card top-margin">Nazwa wycieczki: {{trip.name}}</div>
+    <div class="card description">Opis wycieczki: {{trip.description}}</div>
+    <div class="card">Kraj: {{ trip.country }}</div>
+    <div class="card">Od: {{ trip.startDate.toLocaleDateString() }}</div>
+    <div class="card">Do: {{ trip.endDate.toLocaleDateString() }}</div>
+    <div class="card">Cena: {{ trip.price }} zł</div>
+    <div class="card">{{ trip.seats }} wolnych miejsc</div>
+    <div class="card">
+        <p>Galeria zdjęć</p>
+        <ul class="gallery-photos">
+            <li>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img class="gallery-photo" src="assets/gal1.jpg"></div>
+                        <div class="flip-card-back">
+                            <h1>magic holidays</h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img class="gallery-photo" src="assets/gal2.jpg"></div>
+                        <div class="flip-card-back">
+                            <h1>magic holidays</h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img class="gallery-photo" src="assets/gal3.jpg"></div>
+                        <div class="flip-card-back">
+                            <h1>magic holidays</h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img class="gallery-photo" src="assets/gal6.jpg"></div>
+                        <div class="flip-card-back">
+                            <h1>magic holidays</h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img class="gallery-photo" src="assets/gal5.jpg"></div>
+                        <div class="flip-card-back">
+                            <h1>magic holidays</h1>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <!-- <div class="card"><img src="{{ trip.photoUrl }}" /></div> -->
+  </div>

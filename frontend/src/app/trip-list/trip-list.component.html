@@ -1,0 +1,126 @@
+<body>
+  <div class="wrapper">
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <img
+            class="cart-img"
+            *ngIf="isAdmin"
+            routerLink="/new-trip"
+            src="assets/add.svg"
+          />
+        </li>
+        <li class="cart">
+          <img
+            class="cart-img"
+            routerLink="/cart"
+            src="assets/shopping-cart.svg"
+          />
+        </li>
+        <li class="items-cart">
+          <p>{{ numberOfItems }}</p>
+        </li>
+        <li>
+          <a class="button" *ngIf="!loggedIn" routerLink="/login-panel"
+            >Loguj / Rejestruj</a
+          >
+        </li>
+        <button class="button" *ngIf="loggedIn" (click)="logout()">
+          Wyloguj
+        </button>
+      </ul>
+    </nav>
+    <div class="main-head">
+      <div class="img-logo">
+        <img class="img" src="assets/logo.png" />
+      </div>
+      <header class="top-header">ZNAJDŹ IDEALNE WAKACJE</header>
+    </div>
+    <div class="filter-container filters-drop-shadow">
+      <div class="row">
+        <div class="col">
+          <p>Data od</p>
+          <div class="input-group">
+            <input
+              class="form-control"
+              id="startDate"
+              type="date"
+              ngbDatepicker
+              #startDate="ngbDatepicker"
+              [(ngModel)]="filters.dateFrom"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <p>Data do</p>
+          <div class="input-group">
+            <input
+              class="form-control"
+              id="endDate"
+              type="date"
+              ngbDatepicker
+              #startDate="ngbDatepicker"
+              [(ngModel)]="filters.dateTo"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <p>Cena od</p>
+          <input type="number" [(ngModel)]="filters.priceFrom" />
+        </div>
+        <div class="col">
+          <p>Cena do</p>
+          <input type="number" [(ngModel)]="filters.priceTo" />
+        </div>
+        <div class="col">
+          <p>Ocena od</p>
+          <input
+            min="0"
+            max="10"
+            type="number"
+            [(ngModel)]="filters.ratingFrom"
+          />
+        </div>
+        <div class="col">
+          <p>Ocena do</p>
+          <input
+            min="0"
+            max="10"
+            type="number"
+            [(ngModel)]="filters.ratingTo"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            type="button"
+            class="btn btn-primary button-filt "
+            (click)="applyFilters()"
+          >
+            Filtruj
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary button-filt "
+            (click)="clearFilters()"
+          >
+            Wyczyść
+          </button>
+        </div>
+      </div>
+    </div>
+    <aside class="left-col">
+      <img class="banner" src="assets/banner.jpeg" />
+    </aside>
+    <div class="content">
+      <app-trip
+        *ngFor="let tripEntry of trips | filterTrips: appliedFilters"
+        [trip]="tripEntry"
+        (tripToDeleteEmmiter)="deleteTrip($event)"
+      >
+      </app-trip>
+    </div>
+    <footer class="main-footer">&copy; Biuro podróży Wycieczki - Kraków</footer>
+  </div>
+</body>

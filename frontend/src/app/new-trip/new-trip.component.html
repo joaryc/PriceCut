@@ -1,0 +1,83 @@
+<h2 class="title">Dodaj nową wycieczkę</h2>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="name">Trip name:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="name" type="text" formControlName="name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="address">Trip country:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="country" type="text" formControlName="country">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="startDate">Start Date:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="startDate" type="date" formControlName="startDate" ngbDatepicker #startDate="ngbDatepicker">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="endDate">End Date:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="endDate" type="date" formControlName="endDate" ngbDatepicker #endDate="ngbDatepicker">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="description">Trip description:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="description" type="text" formControlName="description">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="photoUrl">Photo url:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="photoUrl" type="text" formControlName="photoUrl">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="price">Price:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="price" type="currency" formControlName="price">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="seats">Seats number:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="seats" type="number" formControlName="seats">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-25">
+                <label for="rating">Initial rating:</label>
+            </div>
+            <div class="col-75">
+                <input class="form-control" id="rating" type="number" formControlName="rating">
+            </div>
+        </div>
+        <div class="row">
+            <button class="button" type="submit">Add</button>
+        </div>
+    </div>
+    <!-- <p>{{ checkoutForm.value | json }}</p> -->
+
+</form>

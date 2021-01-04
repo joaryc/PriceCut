@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "tripapp-75a2b": {
+      "hosting": {
+        "zadanie7": [
+          "tripapp-75a2b"
+        ]
+      }
+    }
+  }
+}

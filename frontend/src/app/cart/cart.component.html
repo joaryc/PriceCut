@@ -1,0 +1,18 @@
+<h3>Koszyk</h3>
+
+<div class="cart-item" *ngFor="let item of items">
+  <p>{{ item.trip.name }}</p>
+  <p>{{ item.trip.price }} zł</p>
+  <button class="button" (click)="showConfirmationModal(item)">
+    Potwierdzenie wycieczki
+  </button>
+</div>
+<button class="button" (click)="deleteItemsFromCart()">Wyczyść koszyk</button>
+
+<div *ngIf="modalVisible" class="opacity">
+    <div class="modal-content">
+        <p>{{ cartEntryPresentedByModal.trip.name }}</p>
+        <span (click)="close()" class="close">&times;</span>
+        <button (click)="addToHistory()" class="button-submit">Potwierdź</button>
+    </div>
+</div>

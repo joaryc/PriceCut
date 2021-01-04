@@ -1,0 +1,26 @@
+<div class="outer-container">
+  <div class="form-container">
+    <label for="mail">Email</label>
+    <input
+      class="input"
+      id="mail"
+      type="text"
+      placeholder="Your e-mail"
+      [(ngModel)]="emailValue"
+    />
+
+    <label for="password">Hasło</label>
+    <input
+      class="input"
+      id="password"
+      type="password"
+      placeholder="Your password"
+      [(ngModel)]="passwordValue"
+    />
+
+    <div class="login-buttons">
+      <button class="btn btn-primary first-login-button" (click)="onSignIn()">Zaloguj</button>
+      <button class="btn btn-primary" (click)="onSignUp()">Zarejestruj</button>
+    </div>
+  </div>
+</div>

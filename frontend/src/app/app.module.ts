@@ -1,63 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http/';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Routes, RouterModule } from '@angular/router';
+import { TripListComponent } from './trip-list/trip-list.component';
+import { TripComponent } from './trip/trip.component';
+import { RatingComponent } from './rating/rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from './cart/cart.component';
+import { NewTripComponent } from './new-trip/new-trip.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
+import { LoginPanelComponent } from './login-panel/login-panel.component';
+import { TripDetailsComponent } from './trip-details/trip-details.component';
+import { TripConfirmationComponent } from './trip-confirmation/trip-confirmation.component';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataService } from './_services/in-memory-data.service';
-
-import { OccasionDetailComponent } from './components/occasion-detail/occasion-detail.component';
-import { AddOccasionComponent } from './components/add-occasion/add-occasion.component';
-import { FavouriteComponent } from './components/favourite/favourite.component';
-import { GalleryComponent } from './components/gallery/gallery.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { OccasionListComponent } from './components/occasion-list/occasion-list.component';
-import { TopBarComponent } from './components/top-bar/top-bar.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component'; // CLI imports router
-
-import { Ng5SliderModule } from 'ng5-slider';
-import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { ProfileComponent } from './components/profile/profile.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
-
-
-
+import { InMemoryDataService } from './in-memory-data.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OccasionDetailComponent,    
-    AddOccasionComponent,
-    FavouriteComponent,
-    GalleryComponent,
-    PageNotFoundComponent,
-    OccasionListComponent,
-    TopBarComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProfileComponent
+    TripListComponent,
+    TripComponent,
+    RatingComponent,
+    CartComponent,
+    NewTripComponent,
+    FilterPipe,
+    LoginPanelComponent,
+    TripDetailsComponent,
+    TripConfirmationComponent,
   ],
-  exports: [RouterModule],
   imports: [
-    Ng5SliderModule,
-    //HttpClientInMemoryWebApiModule.forRoot(
-    //InMemoryDataService, { dataEncapsulation: false }
     BrowserModule,
-    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AppRoutingModule,
+    NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-    { path: '', component: AppModule },
-    { path: 'products', component: GalleryComponent },
-], { relativeLinkResolution: 'legacy' })
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+    }),
   ],
-  providers: [authInterceptorProviders,{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

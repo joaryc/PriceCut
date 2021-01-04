@@ -1,0 +1,34 @@
+<!-- <div class="trip-container">
+  <div>{{ trip.name }}</p>
+  <p>{{ trip.country }}</p>
+  <p>Od: {{ trip.startDate.toLocaleDateString() }}</p>
+  <p>Do: {{ trip.endDate.toLocaleDateString() }}</p>
+  <p>Cena: {{ trip.price }} zł</p>
+  <p>{{ trip.seats }} wolnych miejsc</p>
+  <img src="{{ trip.photoUrl }}" />
+  <a [routerLink]="['/trip-details', trip.id]" class="button">
+    Zobacz szczegóły
+  </a>
+  <button type="button" (click)="onDeletePress()">Usuń</button>
+  <app-rating [trip]="trip"></app-rating>
+  <button (click)="addToCart(trip)">Buy</button>
+</div> -->
+
+
+<div class="trip-container">
+  <div class="trip-details">
+    <p class="title">{{ trip.name }}</p>
+    <p>Kraj: {{ trip.country }}</p>
+    <p>Od: {{ trip.startDate.toLocaleDateString() }}</p>
+    <p>Do: {{ trip.endDate.toLocaleDateString() }}</p>
+    <p>Cena: {{ trip.price }} zł</p>
+    <app-rating class="stars" [trip]="trip"></app-rating>
+    <button [routerLink]="['/trip-details', trip.id]" class="button">Zobacz szczegóły</button>
+    <button class="button" *ngIf="isLoggedIn" (click)="addToCart(trip)">Kup</button>
+    <button class="button" *ngIf="!isLoggedIn" routerLink="/login-panel">Zaloguj się by kupić</button>
+    <button *ngIf="isAdmin" class="button" type="button" (click)="onDeletePress()">Usuń</button>
+  </div>
+  <div class="trip-img">
+    <img src="{{ trip.photoUrl }}"/>
+  </div>
+</div>
