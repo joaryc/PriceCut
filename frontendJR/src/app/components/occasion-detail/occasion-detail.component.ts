@@ -50,8 +50,8 @@ export class OccasionDetailComponent implements OnInit {
   }
 
   newCommentCreated(comment) {
-    this.newComment.emit(comment);
     window.alert("Thank you, you're opinion is saved!");
+    this.newComment.emit(comment);    
   }
   addToFavourite(product, user) {
     console.log(product);
