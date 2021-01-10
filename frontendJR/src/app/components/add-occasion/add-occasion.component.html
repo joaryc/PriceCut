@@ -1,6 +1,6 @@
 <div *ngIf="!accessError">
     <h1>{{title}}</h1>
-    <form [formGroup]="profileForm">
+    <form [formGroup]="newOccasionForm">
         <label>
       Title:
       <input type="text" formControlName="title" required>
@@ -19,6 +19,10 @@
       <input type="number" min=0 max=1000 formControlName="price" required>
     </label>
         <label>
+      occasion_link:
+      <input type="string" formControlName="occasion_link" required>
+    </label>
+        <label>
       pic_link:
       <input type="string" formControlName="pic_link" required>
     </label>
@@ -30,10 +34,10 @@
       <input type="string" formControlName="gallery4" >
     </label>
         <p>
-            Form Status: {{ profileForm.status}}
+            Form Status: {{ newOccasionForm.status}}
         </p>
         <p>
-            <button [disabled]="!profileForm.valid" type="submit" (click)="addOccasion()">Add</button>
+            <button [disabled]="!newOccasionForm.valid" type="submit" (click)="addOccasion()">Add</button>
         </p>
     </form>
 

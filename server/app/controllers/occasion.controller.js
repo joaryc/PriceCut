@@ -4,6 +4,7 @@ const comment = require("./comment.controller.js");
 
 exports.create = (req, res) => {
     // Validate request
+    console.log(req.body)
     if (!req.body.title || !req.body.start_date || !req.body.end_date ||
         !req.body.price || !req.body.occasion_link) {
         res.status(400).send({ message: "Content can not be empty!" });
