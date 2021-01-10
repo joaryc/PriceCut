@@ -7,7 +7,7 @@ module.exports = app => {
     router.post("/", occasion.create);
 
     router.get("/", occasion.findAll);
-
+    router.get("/:id/comments", comment.findAll);
     router.get("/:id", occasion.findOne);
 
     router.put("/:id", occasion.update);
@@ -18,7 +18,7 @@ module.exports = app => {
 
     router.post("/:id/addcomment", comment.create);
 
-    router.get("/comments/?occasionId", comment.findAll);
+
 
     app.use('/api/cutprice', router);
 };

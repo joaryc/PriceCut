@@ -75,6 +75,6 @@ export class OccasionService {
     return this.http.post(`${this.baseUrl}/${occasionId}/addcomment`, data, this.httpOptions)
   }
   getComments(occasionId): Observable<any> {
-    return this.http.get(`${this.baseUrl}/comments/?occasionId=${occasionId}`);
+    return this.http.get(`${this.baseUrl}/${occasionId}/comments`);
   }
 }

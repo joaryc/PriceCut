@@ -50,11 +50,11 @@ exports.create = (req, res) => {
 
 
 exports.findAll = (req, res) => {
-    console.log("abc");
-    const occasionId = req.query.occasionId;
+
+    const occasionId = req.params.id;
 
     var condition = occasionId ? { occasionId: { "$in": [occasionId] } } : {};
-
+    console.log(occasionId)
     Comment.find(condition)
         .then(data => {
             res.send(data);

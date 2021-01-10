@@ -5,7 +5,7 @@ module.exports = mongoose => {
             username: String,
             text: String,
             rate: Number,
-            tourId: {
+            occasionId: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "occasion"
             }
