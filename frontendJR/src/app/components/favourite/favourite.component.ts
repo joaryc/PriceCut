@@ -23,15 +23,23 @@ export class FavouriteComponent {
 
   getData() {
     this.currentUser = this.token.getUser();
+    
     this.favouriteService.get(this.currentUser.id).subscribe(favouriteObjects => {
       for (let obj of favouriteObjects) {
+        console.log(obj.occasionId);
         this.occasionService.getOccasion(obj.occasionId).subscribe(occasion => {
           this.items.push({ occasion: occasion, favouriteObjId: obj._id, active: true });
-          console.log(this.items)
-        });
-      }
-    })
-  }
+      })}})}
+        
+    
+    //  for (let obj of favouriteObjects) {
+    //    this.occasionService.getOccasion(obj.occasionId).subscribe(occasion => {
+    //      this.items.push({ occasion: occasion, favouriteObjId: obj._id, active: true });
+    //      console.log(this.items)
+    //    });
+    
+    
+  
 
   delete(favouriteItem) {
     window.alert("Reservation deleted!");

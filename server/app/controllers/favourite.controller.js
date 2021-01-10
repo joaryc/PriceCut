@@ -4,17 +4,18 @@ const User = db.user;
 
 
 exports.create = (req, res) => {
+    console.log(req.body)
     if (!req.body.occasionId || !req.params["id"]) {
 
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
-    console.log(req.params)
+    //console.log(req.params)
     const favourite = new Favourite({
         userId: req.params["id"],
         occasionId: req.body.occasionId
     });
-
+    console.log(favourite)
     favourite
         .save(favourite)
         .then(data => {

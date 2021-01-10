@@ -59,6 +59,7 @@ export class OccasionDetailComponent implements OnInit {
       occasionId: product._id,
       userId: user.id
     }
+    console.log("product: " + favouriteProduct.occasionId );
     this.favouriteService.create(JSON.stringify(favouriteProduct),user.id).subscribe(newfavouriteObject => { });
     window.alert('Your product has been added to the favourite!');
   }
