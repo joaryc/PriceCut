@@ -6,7 +6,7 @@
     <span>End date:{{occasion.end_date| date:'fullDate'}} </span>
     <span>Price: {{occasion.price | currency}} </span>
     <span>Description: {{occasion.description}} </span>
-
+    <a class="button fancy-button" href={{occasion.occasion_link}}><i class="material-icons">shopping_cart</i>Go to occasion</a>
     <button *ngIf="isLoggedIn && !showModeratorBoard" (click)="onSelectPlus(occasion,user)">Add to favourites</button>
 
     <button *ngIf="isLoggedIn && showModeratorBoard" (click)="delete(occasion)">remove occasion</button>

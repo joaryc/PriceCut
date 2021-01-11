@@ -2,39 +2,43 @@
     <h1>{{title}}</h1>
     <form [formGroup]="newOccasionForm">
         <label>
-      Title:
+      Title*:
       <input type="text" formControlName="title" required>
     </label>
         <label>
-      Start_date:
+      Star date*:
       <input type="date" formControlName="start_date" required>
     </label>
         <label>
-      End_date:
+      End date*:
       <input type="date" formControlName="end_date" required>
     </label>
 
         <label>
-      price:
+      Price*:
       <input type="number" min=0 max=1000 formControlName="price" required>
     </label>
         <label>
-      occasion_link:
+      Occasion link*:
       <input type="string" formControlName="occasion_link" required>
     </label>
         <label>
-      pic_link:
+      Description*:
+      <input type="string" formControlName="description" required>
+    </label>
+        <label>
+      Picture link*:
       <input type="string" formControlName="pic_link" required>
     </label>
         <label>
-      additional pictures:
+      Additional pictures:
       <input type="string" formControlName="gallery1" >
       <input type="string" formControlName="gallery2" >
       <input type="string" formControlName="gallery3" >
       <input type="string" formControlName="gallery4" >
     </label>
         <p>
-            Form Status: {{ newOccasionForm.status}}
+            Occasion {{ newOccasionForm.status}}
         </p>
         <p>
             <button [disabled]="!newOccasionForm.valid" type="submit" (click)="addOccasion()">Add</button>
