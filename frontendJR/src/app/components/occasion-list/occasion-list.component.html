@@ -6,16 +6,10 @@
         <ng5-slider [formControl]="date" [options]="optionsDateSlider"></ng5-slider>
     </div>
     <div formArrayName="names">
-        Names
+        Titles
         <span *ngFor="let name of names.controls; let i=index">      
       <p>{{namesCheckboxLabels[i]}}<input type="checkbox" name=occasion.name [id]="i" [formControlName]="i"></p>
 
-    </span>
-    </div>
-    <div formArrayName="destinations">
-        Destinations
-        <span *ngFor="let name of destinations.controls; let i=index">
-        <p>{{destinationsCheckboxLabels[i]}}<input type="checkbox" [formControlName]="i"></p>
     </span>
     </div>
 </form>
