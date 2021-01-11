@@ -93,9 +93,9 @@ export class OccasionListComponent {
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return '<b>Departure date:</b>' + new Date(value).toLocaleDateString("en-US");
+          return '<b>Start date:</b>' + new Date(value).toLocaleDateString("en-US");
         case LabelType.High:
-          return '<b>Arrival date:</b>' + new Date(value).toLocaleDateString("en-US");
+          return '<b>End date:</b>' + new Date(value).toLocaleDateString("en-US");
         default:
           return '$' + value;
       }

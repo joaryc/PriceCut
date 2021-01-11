@@ -2,8 +2,9 @@
 
 
     <span>Title: {{occasion.title}} </span>
-    <span>Start date: {{occasion.start_date}} </span>
-    <span>End date:{{occasion.end_date}} </span>
+    <span>Start date: {{occasion.start_date| date:'fullDate'}} </span>
+    <span>End date:{{occasion.end_date| date:'fullDate'}} </span>
+    <span>Price: {{occasion.price | currency}} </span>
     <span>Description: {{occasion.description}} </span>
 
     <button *ngIf="isLoggedIn && !showModeratorBoard" (click)="onSelectPlus(occasion,user)">Add to favourites</button>
