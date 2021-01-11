@@ -45,8 +45,9 @@ export class OccasionDetailComponent implements OnInit {
   }
   delete(occasion: Occasion): void {
     this.occasions = this.occasions.filter(h => h !== occasion);
+    this.deleteOccasion.emit(occasion);
     this.occasionService.deleteOccasion(occasion).subscribe();
-    window.alert("The occasion" + occasion.title + "was deleted");
+   
   }
 
   newCommentCreated(comment) {

@@ -55,8 +55,9 @@ export class OccasionListComponent {
       .subscribe(occasions => {
         this.get_maxPrice(occasions);
         this.get_minPrice(occasions);
+        this.occasions = [];
         this.occasions = occasions
-
+        this.names.controls=[];
         for (var i = 0; i < occasions.length; i++) {
           if (!this.namesCheckboxLabels.includes(occasions[i].title)) {
             this.namesCheckboxLabels.push(occasions[i].title)
@@ -205,8 +206,10 @@ export class OccasionListComponent {
     this.commentsForm.value.rate = "";
 
   }
-  valueChange(count) {
-    this.seatsTaken += count;
+ 
+  deleteOccasion(occasion) {
+    console.log("deleteOccasion Parent")
+    this.getOccasions()
   }
   get_minPrice(occasions: Occasion[]) {
     for (var i = 0; i < occasions.length; i++) {

@@ -20,7 +20,7 @@
   occasion.end_date>=now"
   >
     <app-occasion-detail [user]="user" [isLoggedIn]="isLoggedIn" [showModeratorBoard]="showModeratorBoard" [occasion]="occasion"
-      (valueChanged)="valueChange($event)" (deleteOccasion)="deleteOccasion(occasion)" (newComment)="newComment($event)">
+       (deleteOccasion)="deleteOccasion($event)" (newComment)="newComment($event)">
     </app-occasion-detail>
 
     <span *ngIf="isLoggedIn && !showModeratorBoard">
