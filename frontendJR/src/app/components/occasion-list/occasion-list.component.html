@@ -2,9 +2,6 @@
     <div formArrayName="price">
         <ng5-slider [formControl]="price" [options]="optionsPriceSlider"></ng5-slider>
     </div>
-    <div formArrayName="date">
-        <ng5-slider [formControl]="date" [options]="optionsDateSlider"></ng5-slider>
-    </div>
     <div formArrayName="names">
         Titles
         <span *ngFor="let name of names.controls; let i=index">      
@@ -15,12 +12,13 @@
 </form>
 
 
-<div *ngIf="isLoggedIn && showModeratorBoard">
-    <p [ngClass]="(seatsTaken)>10  ? 'free': 'occupied'">Total Taken Seats : {{seatsTaken}}</p>
-</div>
-<span *ngFor="let occasion of occasions; index as i" class="flex-container" style="flex-direction: row">
 
-  <div >
+<span *ngFor="let occasion of occasions; index as i" class="flex-container" style="flex-direction: row">
+  <div  *ngIf="filteredNames.includes(occasion.title)&&
+  filteredMaxPrice>=occasion.price&&
+  occasion.price>= filteredMinPrice&&
+  occasion.end_date>=now"
+  >
     <app-occasion-detail [user]="user" [isLoggedIn]="isLoggedIn" [showModeratorBoard]="showModeratorBoard" [occasion]="occasion"
       (valueChanged)="valueChange($event)" (deleteOccasion)="deleteOccasion(occasion)" (newComment)="newComment($event)">
     </app-occasion-detail>

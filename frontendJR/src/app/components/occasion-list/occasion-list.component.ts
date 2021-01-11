@@ -35,6 +35,7 @@ export class OccasionListComponent {
   username;
   comments = {};
   user;
+  now=new Date().getTime();
 
 
   namesCheckboxLabels = [];
