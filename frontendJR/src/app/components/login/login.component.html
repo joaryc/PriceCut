@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <div class="card card-container">
-        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+        <img id="profile-img" src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" class="profile-img-card" />
         <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -13,9 +13,9 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
                 <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
-                    <div *ngIf="password.errors.required">Password is required</div>
-                    <div *ngIf="password.errors.minlength">
-                        Password must be at least 6 characters
+                    <div *ngIf="password.errors.required" class="alert alert-danger">Password is required!</div>
+                    <div *ngIf="password.errors.minlength" class="alert alert-danger">
+                        Password must be at least 6 characters!
                     </div>
                 </div>
             </div>
