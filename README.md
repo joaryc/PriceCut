@@ -13,7 +13,7 @@ Run prod version:
 
 Update new frontend:
 
-    1. Go to  "frontend" directory
+    1. Go to  "frontendjr" directory
     2. Run "ng build --prod"
     3. Copy files from: "frontend\static" to: "server\app\views"
     4. Go to "server" directory 
