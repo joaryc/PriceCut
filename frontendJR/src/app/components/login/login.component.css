@@ -51,4 +51,14 @@ label {
     box-shadow: none;
     text-align: center;
     margin: 0;
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.alert-success {
+    color: green;
+    font-weight: bolder;
+    box-shadow: none;
+    text-align: center;
+    padding: 3px 3px 3px 3px;
+    background-color: rgba(0, 0, 0, 0.0);
 }
