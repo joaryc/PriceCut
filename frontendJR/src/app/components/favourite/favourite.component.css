@@ -1,13 +1,32 @@
+.header {
+    text-align: center;
+    font-family: sans-serif;
+}
 
-  .cart-item{
+.cart-item {
     width: 100%;
     min-width: 400px;
     max-width: 450px;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
+    display: grid;
+    grid-gap: 10px;
     padding: 16px 32px;
     margin-bottom: 8px;
     border-radius: 2px;
     background-color: #EEEEEE;
-  }
+}
+
+.btn {
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #38AECC;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 100%);
+    box-shadow: 2px 2px 4px #000000;
+}
