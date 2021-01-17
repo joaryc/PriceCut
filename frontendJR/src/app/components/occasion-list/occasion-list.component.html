@@ -24,26 +24,26 @@
     </app-occasion-detail>
 
     <span *ngIf="isLoggedIn && !showModeratorBoard">
-      <div>
+      <div class="rating">
         <form [formGroup]="commentsForm" style="display: row">
-          <label>
+          <label class="rate">
             Rate:
             <input type="number" min=0 max=5 #box formControlName="rate" required>
           </label>
 
-          <label>
+          <label class="rate">
             Comment:
             <input type="text" formControlName="text" required>
           </label>
 
           <p>
-            <button [disabled]="!commentsForm.valid" type="submit" (click)="addComment(occasion)">Add Comment</button>
+            <button class="rate btn" [disabled]="!commentsForm.valid" type="submit" (click)="addComment(occasion)">Add Comment</button>
           </p>
         </form>
       </div>
     </span>
 
-<div *ngFor="let comment of comments[occasion._id]">
+<div *ngFor="let comment of comments[occasion._id]" class="comments">
     <p>Rate: {{comment.rate}}</p>
     <p>Comment: {{comment.text}}</p>
     <p>User: {{comment.username}}</p>
