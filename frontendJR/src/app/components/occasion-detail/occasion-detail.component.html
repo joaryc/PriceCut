@@ -1,17 +1,17 @@
 <div *ngIf="occasion">
 
-
-    <span>Title: {{occasion.title}} </span>
-    <span>Start date: {{occasion.start_date| date:'fullDate'}} </span>
-    <span>End date:{{occasion.end_date| date:'fullDate'}} </span>
-    <span>Price: {{occasion.price | currency}} </span>
-
-    <a class="button fancy-button" href={{occasion.occasion_link}}><i class="material-icons">shopping_cart</i>Go to occasion</a>
-    <button *ngIf="isLoggedIn && !showModeratorBoard" (click)="onSelectPlus(occasion,user)">Add to favourites</button>
-
-    <button *ngIf="isLoggedIn && showModeratorBoard" (click)="delete(occasion)">remove occasion</button>
-
-
-    <img src={{occasion.pic_link}} [routerLink]="['/occasion-detail-view/']" [queryParams]="{ occasionId: occasion._id}">
-
+    <div>
+        <div class="productInfo">
+            <div class="grid-item title"><span>Title: {{occasion.title}} </span></div>
+            <div class="grid-item startDate"><span>Start date: {{occasion.start_date| date:'fullDate'}} </span></div>
+            <div class="grid-item endDate"><span>End date:{{occasion.end_date| date:'fullDate'}} </span></div>
+            <div class="grid-item price"><span>Price: {{occasion.price | currency}} </span></div>
+            <div class="grid-item image"><img src={{occasion.pic_link}} [routerLink]="['/occasion-detail-view/']" [queryParams]="{ occasionId: occasion._id}"></div>
+        </div>
+        <div class="buttons grid-item">
+            <a class="button fancy-button btn" href={{occasion.occasion_link}}><i class="material-icons">favorite</i>Go to occasion</a>
+            <button *ngIf="isLoggedIn && !showModeratorBoard" (click)="onSelectPlus(occasion,user)" class="btn">Add to favourites</button>
+            <button *ngIf="isLoggedIn && showModeratorBoard" (click)="delete(occasion)" class="btn">Remove occasion</button>
+        </div>
+    </div>
 </div>
