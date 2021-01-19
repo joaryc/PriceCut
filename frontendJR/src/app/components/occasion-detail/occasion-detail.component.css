@@ -1,76 +1,134 @@
+* {
+    text-align: center;
+    margin: 0;
+    box-shadow: none;
+}
 
+.grid-item {
+    box-shadow: none;
+    padding: 0;
+    width: 50vw;
+}
+
+.startDate,
+.endDate,
+.price {
+    font-size: medium;
+}
+
+.title {
+    font-size: large;
+    font-weight: bolder;
+}
+
+.productInfo {
+    float: left;
+}
 
 .hidden {
     visibility: hidden;
-  }
+}
 
 .visible {
     visibility: visible;
 }
-.occupied{
+
+.occupied {
     color: Tomato;
 }
-.free{
+
+.free {
     color: MediumSeaGreen;
 }
-.maxPrice{
+
+.maxPrice {
     border-style: solid;
     border-color: Tomato;
 }
-.minPrice{
-    border-style:solid;
+
+.minPrice {
+    border-style: solid;
     border-color: MediumSeaGreen;
 }
 
-.action { 
-    position: fixed; padding: 5px;
-    bottom: 0; right: 0; background: #333;color: #fff;
+.action {
+    position: fixed;
+    padding: 5px;
+    bottom: 0;
+    right: 0;
+    background: #333;
+    color: #fff;
 }
+
 img {
     max-width: 100%;
     max-height: 100%;
-    border-radius: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    display: block;
-    
     width: auto;
     height: auto;
-    
-  }
-  .rate {
+    border-radius: 6px;
+}
+
+.buttons {
+    margin-bottom: 6px;
+}
+
+.btn {
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #38AECC;
+    border-radius: 8px;
+    height: 100%;
+    margin-bottom: 4px;
+    width: 200px;
+}
+
+.btn:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 20%, rgba(0, 212, 255, 1) 100%);
+    box-shadow: 2px 2px 4px #000000;
+}
+
+.rate {
     float: left;
     height: 46px;
     padding: 0 10px;
 }
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
 }
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
 }
-.rate:not(:checked) > label:before {
+
+.rate:not(:checked)>label:before {
     content: '★ ';
 }
-.rate > input:checked ~ label {
-    color: #ffc700;    
+
+.rate>input:checked~label {
+    color: #ffc700;
 }
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #deb217;
 }
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
     color: #c59b08;
 }

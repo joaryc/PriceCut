@@ -8,8 +8,8 @@
 <body>
     <div>
 
-        <li style="float:right"><a routerLinkActive="active" class="button fancy-button" [routerLink]='[""]'><i
-                    class="material-icons" style="font-size:30px">beach_access</i>PriceCut</a></li>
+        <li style="float:right" class="logo"><a routerLinkActive="active" class="button fancy-button" [routerLink]='[""]'><i
+                    class="material-icons" style="font-size:30px">savings</i>PriceCut</a></li>
         <li *ngIf="isLoggedIn" style="float:right"><a routerLinkActive="active" class="button fancy-button" [routerLink]='["/add-occasion"]'><i
                     class="material-icons">add_to_photos</i>Add new occasion</a></li>
 
@@ -20,7 +20,7 @@
         <li *ngIf="isLoggedIn" style="float:right"><a routerLinkActive="active" class="button fancy-button" (click)="logout()"><i class="material-icons">assignment_ind</i>LogOut</a></li>
 
         <li *ngIf="isLoggedIn && !showModeratorBoard" style="float:right"><a routerLinkActive="active" class="button fancy-button" [routerLink]="['/favourites']"><i
-                    class="material-icons">shopping_cart</i>Favourites</a></li>
+                    class="material-icons">favorite</i>Favourites</a></li>
 
     </div>
 </body>

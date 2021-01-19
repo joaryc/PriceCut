@@ -1,32 +1,44 @@
+* {
+    width: 60vw;
+    padding: 5px;
+    box-shadow: none;
+}
 
-
-  
 .hidden {
     visibility: hidden;
-  }
+}
 
 .visible {
     visibility: visible;
 }
-.occupied{
+
+.occupied {
     color: Tomato;
 }
-.free{
+
+.free {
     color: MediumSeaGreen;
 }
-.maxPrice{
+
+.maxPrice {
     border-style: solid;
     border-color: Tomato;
 }
-.minPrice{
-    border-style:solid;
+
+.minPrice {
+    border-style: solid;
     border-color: MediumSeaGreen;
 }
 
-.action { 
-    position: fixed; padding: 5px;
-    bottom: 0; right: 0; background: #333;color: #fff;
+.action {
+    position: fixed;
+    padding: 5px;
+    bottom: 0;
+    right: 0;
+    background: #333;
+    color: #fff;
 }
+
 img {
     max-width: 100%;
     max-height: 100%;
@@ -35,54 +47,58 @@ img {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    
     width: auto;
     height: auto;
-    
-  }
+}
 
-  /* ProfileEditorComponent's private CSS styles */
+
+/* ProfileEditorComponent's private CSS styles */
+
 :host {
     display: flex;
     flex-direction: column;
     padding-top: 24px;
-  }
-  
-  label {
+}
+
+label {
     display: block;
     width: 6em;
     margin: .5em 0;
     color: #607D8B;
     font-weight: bold;
-  }
-  
-  input {
-    height: 2em;
+    font-size: medium;
+}
+
+input {
+    height: 2.5em;
     font-size: 1em;
     padding-left: .4em;
-  }
-  
-  button {
-    font-family: Arial;
-    background-color: #eee;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #cfd8dc;
-  }
-  
-  button:disabled {
+    border-radius: 6px;
+    margin-top: 3px;
+}
+
+button {
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #38AECC;
+    border-radius: 8px;
+    width: 70px;
+    padding: 20px;
+}
+
+button:disabled {
     background-color: #eee;
     color: #ccc;
     cursor: auto;
-  }
-  
-  
-  /*
+    text-align: center;
+}
+
+.status {
+    color: #38AECC;
+}
+
+
+/*
   Copyright Google LLC. All Rights Reserved.
   Use of this source code is governed by an MIT-style license that
   can be found in the LICENSE file at https://angular.io/license

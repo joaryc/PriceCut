@@ -1,8 +1,12 @@
-<h3>{{currentUser.username}} Favourites</h3>
+<h3 class="header">{{currentUser.username}} Favourites</h3>
 <span *ngFor="let item of items">
   <div class="cart-item" *ngIf="item.active">
+    <div class="title grid-item">
     <span>{{ item.occasion.title }}</span>
-<span>{{ item.occasion.price | currency }}</span>
-<button (click)="delete(item)">Remove</button>
+</div>
+<div class="price grid-item">
+    <span>{{ item.occasion.price | currency }}</span>
+</div>
+<div class="grid-item"><button (click)="delete(item)" class="btn">Remove</button></div>
 </div>
 </span>
